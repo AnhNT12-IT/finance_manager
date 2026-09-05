@@ -1,0 +1,30 @@
+# Nuxt / Node
+node_modules/
+.nuxt/
+.output/
+.nitro/
+.cache/
+dist/
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+
+# Logs / OS / IDE
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Test / coverage
+coverage/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Misc
+*.local

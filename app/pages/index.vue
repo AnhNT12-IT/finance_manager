@@ -16,7 +16,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section class="stack">
+  <section
+    class="stack"
+    :aria-busy="isLoading"
+  >
     <div>
       <h1 class="page-title">
         Dashboard
@@ -26,19 +29,19 @@ onMounted(async () => {
       </p>
     </div>
 
-    <div
-      v-if="isLoading"
-      class="panel loading-state"
-    >
-      Đang tải thống kê...
-    </div>
-
     <p
-      v-else-if="errorMessage"
+      v-if="errorMessage && !dashboard"
       class="error-text"
     >
       {{ errorMessage }}
     </p>
+
+    <div
+      v-if="isLoading && !dashboard"
+      class="panel loading-state"
+    >
+      Đang tải thống kê...
+    </div>
 
     <template v-else-if="dashboard">
       <div class="panel">

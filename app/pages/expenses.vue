@@ -14,6 +14,7 @@ const {
   totalCount,
   isLoading,
   errorMessage,
+  hasLoaded,
   fetchExpenses,
   createExpense,
   updateExpense,
@@ -152,7 +153,10 @@ const goToPage = async (nextPage: number) => {
       </button>
     </div>
 
-    <div class="panel">
+    <div
+      class="panel"
+      :aria-busy="isLoading"
+    >
       <div class="toolbar">
         <div class="field">
           <label for="filter-month">Tháng</label>
@@ -217,27 +221,27 @@ const goToPage = async (nextPage: number) => {
       </div>
 
       <div
-        v-if="isLoading"
+        v-if="isLoading && !hasLoaded"
         class="loading-state"
       >
         Đang tải...
       </div>
 
       <p
-        v-else-if="errorMessage"
+        v-else-if="errorMessage && !hasLoaded"
         class="error-text"
       >
         {{ errorMessage }}
       </p>
 
       <div
-        v-else-if="expenses.length === 0"
+        v-else-if="hasLoaded && expenses.length === 0"
         class="empty-state"
       >
         Chưa có khoản chi phù hợp. Hãy thêm chi tiêu đầu tiên.
       </div>
 
-      <template v-else>
+      <template v-else-if="expenses.length > 0">
         <div class="table-wrap desktop-only">
           <table class="data-table">
             <thead>

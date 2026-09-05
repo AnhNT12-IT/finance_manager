@@ -13,6 +13,7 @@ export const useExpenses = () => {
   const totalCount = useState<number>('expenses-total', () => 0)
   const isLoading = useState<boolean>('expenses-loading', () => false)
   const errorMessage = useState<string | null>('expenses-error', () => null)
+  const hasLoaded = useState<boolean>('expenses-has-loaded', () => false)
 
   /**
    * Fetch expenses with optional filters.
@@ -21,6 +22,7 @@ export const useExpenses = () => {
     if (!family.value) {
       expenses.value = []
       totalCount.value = 0
+      hasLoaded.value = true
       return []
     }
 
@@ -68,6 +70,7 @@ export const useExpenses = () => {
 
       expenses.value = (data ?? []) as ExpenseWithRelations[]
       totalCount.value = count ?? 0
+      hasLoaded.value = true
 
       return expenses.value
     } catch (error) {
@@ -207,6 +210,7 @@ export const useExpenses = () => {
     totalCount,
     isLoading,
     errorMessage,
+    hasLoaded,
     fetchExpenses,
     createExpense,
     updateExpense,

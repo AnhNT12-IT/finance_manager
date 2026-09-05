@@ -48,7 +48,7 @@ onMounted(async () => {
         <p class="stat-value">
           {{ formatVnd(dashboard.monthlyTotal) }}
         </p>
-        <div class="toolbar" style="margin-top: 1rem; margin-bottom: 0;">
+        <div class="toolbar page-toolbar page-toolbar--flush">
           <NuxtLink
             class="btn btn-primary"
             to="/expenses?action=add"

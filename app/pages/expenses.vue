@@ -134,7 +134,7 @@ const goToPage = async (nextPage: number) => {
 
 <template>
   <section class="stack">
-    <div class="toolbar" style="justify-content: space-between; align-items: center;">
+    <div class="toolbar page-toolbar">
       <div>
         <h1 class="page-title">
           Chi tiêu
@@ -296,7 +296,7 @@ const goToPage = async (nextPage: number) => {
               {{ expense.member?.display_name || '—' }}
               <span v-if="expense.description"> · {{ expense.description }}</span>
             </div>
-            <div class="toolbar" style="margin: 0.75rem 0 0;">
+            <div class="toolbar toolbar--card-actions">
               <button
                 type="button"
                 class="btn btn-secondary"
@@ -319,7 +319,7 @@ const goToPage = async (nextPage: number) => {
           <span class="muted">
             Trang {{ page }} / {{ totalPages }} · {{ totalCount }} khoản
           </span>
-          <div class="toolbar" style="margin: 0;">
+          <div class="toolbar toolbar--flush">
             <button
               type="button"
               class="btn btn-secondary"
